@@ -1,0 +1,227 @@
+<html>
+<head>
+    <title>TranscendenceRL</title>
+    <style>
+
+        * {
+            font-family: IBM Plex Mono;
+            color:white;
+        }
+
+        #body {
+            background-image: URL(Background.png);
+            background-attachment:fixed;
+            background-color:white;
+        }
+
+        #logoText {
+            font: 22px IBM Plex Mono;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+            text-shadow: 4px 4px 1px black;
+        }
+        .row > div {
+            display:inline-block;
+            margin-left:16px;
+            margin-right:16px;
+        }
+
+
+            .voices > div > h2 {
+                margin-left: 32px;
+                width: 256px;
+            }
+            .voices > div > p {
+                margin-left:32px;
+                width: 256px;
+            }
+
+        .voices > div {
+            border: 2px solid white;
+        }
+
+        .ships > div {
+            border:2px solid white;
+            vertical-align:top;
+            width:420px;
+        }
+        .ships > div > h2 {
+            text-align:center;
+        }
+            .ships > div > img {
+                position: relative;
+                width: 420px;
+                height: 420px;
+            }
+            .ships > div > p {
+                margin-left:32px;
+                margin-right:32px;
+            }
+
+        h1 {
+            font-size: 36px;
+        }
+        h1 {
+            font-size: 28px;
+        }
+        p, li {
+            font-size:20px;
+        }
+
+    </style>
+</head>
+<body id="body">
+    <canvas id="logo" width="0" height="0" hidden="hidden"></canvas>
+    <pre id="logoText"></pre>
+    <script type="text/javascript">
+        let logoText =
+            String.raw`
+....................................................................................................................
+                                                                                                                    
+/======\ /=====>  /======\ />    /| |>=====> />=====> |>=====> />    /| |>===>   |>=====> />    |\ />=====> |>=====>
+   \/    ||    || ||    || ||\   || ||       ||       ||       ||\   || ||   =>  ||       ||\   || ||       ||      
+   ||    |>====>  |>====<| || \  || |>====<| ||=====> ||       || \  || ||    => |>=====> || \  || ||       |>=====>
+   ||    || \\    ||    || ||  \ ||       || ||       ||       ||  \ || ||   =>  ||       ||  \ || ||       ||      
+   ||    ||   \=> ||    || |/   \</ <=====>| \>=====> |>=====> |/   \</ |>===>   |>=====> |/   \</ \>=====> |>=====>
+                                                                                                                    
+|==\  __   __        __    |===       __        |     *   __                                                        
+|__/ /  \ /  \ |  | /__\   |=   |--\ /  \ |--+ -|-   -+  /__\ |--\                                                  
+| \_ \__/ \__/ \__| \__    |    |    \__/ |  |   \_ __|_ \__  |                                                     
+           __|                                                                                                      
+                                                                                 
+....................................................................................................................`;
+
+        document.getElementById('logoText').innerText = logoText;
+
+        function renderLogo() {
+            let canvas = document.getElementById('logo');
+            console.log(logoText);
+            let ctx = canvas.getContext('2d');
+            window.requestAnimationFrame(update);
+            let width = canvas.width = window.innerWidth - 32;
+            let height = canvas.height;
+            let ticks = 0;
+            function update() {
+                ctx.clearRect(0, 0, width, height);
+
+                ticks += 2;
+
+                let size = 20;
+                ctx.font = `${size}px IBM Plex Mono`;
+                ctx.textAlign = "left";
+                ctx.fillStyle = 'white';
+
+                let y = 64;
+                let lines = logoText.split('\n');
+                for (let index in lines) {
+                    let line = lines[index];
+                    let x = width / 16;
+                    ctx.fillText(line, x, y);
+                    ctx.fillText(line, x, y + 1);
+                    ctx.fillText(line, x + 1, y + 1);
+                    y += size;
+                }
+                y = 64;
+
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                for (let index in lines) {
+                    let x = width / 16;
+                    let length = lines[index].length;
+                    for (let i = 0; i < length; i++) {
+                        ctx.fillRect(x + i * 12, y, 12, size);
+                    }
+                    y += size;
+                }
+
+                window.requestAnimationFrame(update);
+            }
+        }
+    </script>
+    <div style="margin-left:128px; margin-right:128px;">
+        <h1>
+            Introduction
+        </h1>
+        <p>
+            TranscendenceRL is a story-rich, real-time, grid-based, ASCII-style, space-opera roguelike set in the universe of George Moromisato's <em>Transcendence</em>.
+        </p>
+
+        <h1>Backstory</h1>
+        <p>
+            In the Rogue Frontier, war remains unheard and yet ever persistent. Civilizations crumble without a sound. Space is where the Voices of the Core echo their words. To most humans, the words sound like nothing but radio noise. But if someone is (un)lucky enough, one of the Voices might appear to them out of nowhere.
+        </p>
+        <div class="row voices">
+            <div>
+                <h2 style="color:violet;">The Orator</h2>
+                <p style="color:violet;">Voice of reasonable order</p>
+            </div>
+            <div>
+                <h2 style="color:red;">The Dictator</h2>
+                <p style="color:red;">Voice of unreasonable order</p>
+            </div>
+            <div>
+                <h2 style="color:cyan;">The Debater</h2>
+                <p style="color:cyan;">Voice of reasonable chaos</p>
+            </div>
+            <div>
+                <h2 style="color:seagreen;">The Rhetor</h2>
+                <p style="color:seagreen;">Voice of unreasonable chaos</p>
+            </div>
+        </div>
+        <p>
+            In a dream, you met the Orator and received several visions followed by a simple message: If you want an answer, then travel to the Galactic Core or die trying.
+        </p>
+        <p>
+            Soon after the dream, you bought yourself a starship and headed over to a nearby outpost of the Followers of the Orator. There, you may find guidance on reaching the Core. What happens next is up to you.
+        </p>
+        <h1>
+            Choose a ship
+        </h1>
+        <p>
+            Buy your first starship and upgrade your weapons, shields, armor, and reactor as you go.
+        </p>
+        <div class="row ships">
+            <div>
+                <h2>Amethyst-class yacht</h2>
+                <img class="shipImage" src="ship_amethyst.png" />
+                <p>A aesthetically-pleasing general-purpose ship for wealthy buyers. The Amethyst strikes a balance between weapon firepower, cargo capacity, and engine power.</p>
+            </div>
+
+            <div>
+                <h2>Beowulf-class gunship</h2>
+                <img class="shipImage" src="ship_beowulf.png" />
+                <p>A combat-oriented ship for highly aggressive pilots. The Beowulf is armed with fast engines and faster lasers.</p>
+            </div>
+
+            <div>
+                <h2>Wagon-class freighter</h2>
+                <img class="shipImage" src="ship_wagon.png" />
+                <p>A merchant's ship with plenty of space for cargo and devices. The Wagon is armed with an omnidirectional cannon for easy aiming.</p>
+            </div>
+        </div>
+
+        <h1>Interact with civilizations</h1>
+        <p>There are multiple civilizations, each with their own problems and enemies.</p>
+        <ul>
+            <li>The United Constellation is your home, cursed with the aggression of warlords and pirates</li>
+            <li>The Followers of the Orator is a sect that runs monasteries for the Orator's pilgrims.</li>
+            <li>The Orion Warlords hunt Constellation citizens with high-velocity weapons.</li>
+            <li>The Iron Pirates sustain themselves by seizing resources from other civilizations</li>
+            <li>The Unsung Triad are a gang of rogue transhuman technologists</li>
+        </ul>
+
+
+        <h1>
+            Travel the stars
+        </h1>
+        <p>
+            Fight your way to the Galactic Core. Dock with wrecks to collect treasure and dock with stations to trade items. Travel across the wide empty space in a way similar to Star Control 2.
+        </p>
+        <h1>
+            Enter the Rogue Frontier
+        </h1>
+        <a href="https://ineedauniqueusername.itch.io/rogue-frontier">Download on itch.io</a>
+        <a href="https://github.com/INeedAUniqueUsername/TranscendenceRL">Source code on GitHub</a>
+    </div>
+</body>
+</html>
