@@ -1,55 +1,83 @@
 <html>
 <head>
-    <title>TranscendenceRL</title>
+    <title>Transcendence: Rogue Frontier</title>
     <style>
 
         * {
+            margin: 0px 0px 0px 0px;
+            padding:0px 0px 0px 0px;
             font-family: IBM Plex Mono;
             color:white;
         }
 
         #body {
             background-image: URL(Background.png);
-            background-attachment:fixed;
-            background-color:white;
+            background-size: 100%;
+            background-position: 0px 0px;
         }
 
-        #logoText {
-            font: 22px IBM Plex Mono;
+
+        #main {
+            background-image: url(RogueFrontierPosterV2.asc.png);
+            background-size: 100%;
+            background-position: 0px 0px;
+            margin: 0px 0px 0px 0px;
+            padding:0px 0px 0px 0px;
+            height:110%;
+
+            
             text-align: center;
-            color: white;
-            line-height: 20px;
-            text-shadow: 4px 4px 1px black;
+        }
+        #title {
+            font-size: 64px;
+            margin: 0px 160px 0px 160px;
+            padding:16px 0px 16px 0px;
+            background-color: rgba(98, 0, 179, 0.5);
+        }
+        #subtitle {
+            font-size: 32px;
+            margin: 32px auto 32px auto;
+            padding:0px 0px 0px 0px;
+            background-color: black;
+            width:640px;
+        }
+        #desc {
+            margin-left:96px;
+            margin-right:96px;
+            margin-bottom:256px;
+        }
+        .section {
+            margin-top:32px;
+            padding:32px 32px 32px 32px;
+            background-color: rgba(0, 72, 139, 0.41);
         }
 
-        #poster {
-            width:90%; margin-left:5%; margin-right:5%;
-            border: 2px white solid;
+        h1 {
+            font-size:36px;
         }
+        p {
+            margin-top:24px;
+            font-size: 24px;
+        }
+
+        
         .row > div {
             display:inline-block;
-            margin-left:16px;
-            margin-right:16px;
         }
-
-
-            .voices > div > h2 {
-                margin-left: 32px;
-                width: 256px;
-            }
-            .voices > div > p {
-                margin-left:32px;
-                width: 256px;
-            }
 
         .voices > div {
             border: 2px solid white;
+            
+            margin: 0px 0px 0px 0px;
+            text-align: center;
+            width:300px;
         }
 
         .ships > div {
             border:2px solid white;
             vertical-align:top;
             width:420px;
+            background-color: black;
         }
         .ships > div > h2 {
             text-align:center;
@@ -60,179 +88,127 @@
                 height: 420px;
             }
             .ships > div > p {
+                margin-top: 0px;
                 margin-left:32px;
                 margin-right:32px;
+                margin-bottom: 32px;
             }
 
-        h1 {
-            font-size: 36px;
+        ul {
+            font-size:24px;
+            margin-left:32px;
         }
-        h1 {
-            font-size: 28px;
-        }
-        p, li {
-            font-size:20px;
-        }
-
     </style>
 </head>
 <body id="body">
-    <canvas id="logo" width="0" height="0" hidden="hidden"></canvas>
-    <pre id="logoText"></pre>
-    <script type="text/javascript">
-        let logoText =
-            String.raw`
-....................................................................................................................
-                                                                                                                    
-/======\ /=====>  /======\ />    /| |>=====> />=====> |>=====> />    /| |>===>   |>=====> />    |\ />=====> |>=====>
-   \/    ||    || ||    || ||\   || ||       ||       ||       ||\   || ||   =>  ||       ||\   || ||       ||      
-   ||    |>====>  |>====<| || \  || |>====<| ||=====> ||       || \  || ||    => |>=====> || \  || ||       |>=====>
-   ||    || \\    ||    || ||  \ ||       || ||       ||       ||  \ || ||   =>  ||       ||  \ || ||       ||      
-   ||    ||   \=> ||    || |/   \</ <=====>| \>=====> |>=====> |/   \</ |>===>   |>=====> |/   \</ \>=====> |>=====>
-                                                                                                                    
-|==\  __   __        __    |===       __        |     *   __                                                        
-|__/ /  \ /  \ |  | /__\   |=   |--\ /  \ |--+ -|-   -+  /__\ |--\                                                  
-| \_ \__/ \__/ \__| \__    |    |    \__/ |  |   \_ __|_ \__  |                                                     
-           __|                                                                                                      
-                                                                                 
-....................................................................................................................`;
-
-        document.getElementById('logoText').innerText = logoText;
-
-        function renderLogo() {
-            let canvas = document.getElementById('logo');
-            console.log(logoText);
-            let ctx = canvas.getContext('2d');
-            window.requestAnimationFrame(update);
-            let width = canvas.width = window.innerWidth - 32;
-            let height = canvas.height;
-            let ticks = 0;
-            function update() {
-                ctx.clearRect(0, 0, width, height);
-
-                ticks += 2;
-
-                let size = 20;
-                ctx.font = `${size}px IBM Plex Mono`;
-                ctx.textAlign = "left";
-                ctx.fillStyle = 'white';
-
-                let y = 64;
-                let lines = logoText.split('\n');
-                for (let index in lines) {
-                    let line = lines[index];
-                    let x = width / 16;
-                    ctx.fillText(line, x, y);
-                    ctx.fillText(line, x, y + 1);
-                    ctx.fillText(line, x + 1, y + 1);
-                    y += size;
-                }
-                y = 64;
-
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
-                for (let index in lines) {
-                    let x = width / 16;
-                    let length = lines[index].length;
-                    for (let i = 0; i < length; i++) {
-                        ctx.fillRect(x + i * 12, y, 12, size);
-                    }
-                    y += size;
-                }
-
-                window.requestAnimationFrame(update);
-            }
-        }
-    </script>
-
-    <img src="RogueFrontierPosterV2.asc.png" id="poster"/>
-    <div style="margin-left:128px; margin-right:128px; margin-bottom:256px;">
-        <h1>
-            Introduction
-        </h1>
-        <p>
-            TranscendenceRL is a story-rich, real-time, grid-based, ASCII-style, space-opera roguelike set in the universe of George Moromisato's <em>Transcendence</em>.
-        </p>
-
-        <h1>Backstory</h1>
-        <p>
-            In the Rogue Frontier, war remains unheard and yet ever persistent. Civilizations crumble without a sound. Space is where the Voices of the Core echo their words. To most humans, the words sound like nothing but radio noise. But if someone is (un)lucky enough, one of the Voices might appear to them out of nowhere.
-        </p>
-        <div class="row voices">
-            <div>
-                <h2 style="color:violet;">The Orator</h2>
-                <p style="color:violet;">Voice of reasonable order</p>
-            </div>
-            <div>
-                <h2 style="color:red;">The Dictator</h2>
-                <p style="color:red;">Voice of unreasonable order</p>
-            </div>
-            <div>
-                <h2 style="color:cyan;">The Debater</h2>
-                <p style="color:cyan;">Voice of reasonable chaos</p>
-            </div>
-            <div>
-                <h2 style="color:seagreen;">The Rhetor</h2>
-                <p style="color:seagreen;">Voice of unreasonable chaos</p>
-            </div>
-        </div>
-        <p>
-            In a dream, you met the Orator and received several visions followed by a simple message: If you want an answer, then travel to the Galactic Core or die trying.
-        </p>
-        <p>
-            Soon after the dream, you bought yourself a starship and headed over to a nearby outpost of the Followers of the Orator. There, you may find guidance on reaching the Core. What happens next is up to you.
-        </p>
-        <h1>
-            Choose a ship
-        </h1>
-        <p>
-            Buy your first starship and upgrade your weapons, shields, armor, and reactor as you go.
-        </p>
-        <div class="row ships">
-            <div>
-                <h2>Amethyst-class yacht</h2>
-                <img class="shipImage" src="ship_amethyst.png" />
-                <p>A aesthetically-pleasing general-purpose ship for wealthy buyers. The Amethyst strikes a balance between weapon firepower, cargo capacity, and engine power.</p>
-            </div>
-
-            <div>
-                <h2>Beowulf-class gunship</h2>
-                <img class="shipImage" src="ship_beowulf.png" />
-                <p>A combat-oriented ship for highly aggressive pilots. The Beowulf is armed with fast engines and faster lasers.</p>
-            </div>
-
-            <div>
-                <h2>Wagon-class freighter</h2>
-                <img class="shipImage" src="ship_wagon.png" />
-                <p>A merchant's ship with plenty of space for cargo and devices. The Wagon is armed with an omnidirectional cannon for easy aiming.</p>
-            </div>
-        </div>
-
-        <h1>Interact with factions</h1>
-        <p>There are multiple factions, each with their own problems and enemies.</p>
-        <ul>
-            <li>The United Constellation is your home and the target of warlords and pirates</li>
-            <li>The Followers of the Orator provides shelters for the Orator's surviving pilgrims.</li>
-            <li>The Orion Warlords strike Constellation citizens with high-velocity weapons.</li>
-            <li>The Iron Pirates sustain themselves by seizing resources from other factions by force</li>
-        </ul>
-
-
-        <h1>
-            Travel the stars
-        </h1>
-        <p>
-            Fight your way to the Galactic Core. Dock with wrecks to collect treasure and dock with stations to trade items. Travel across the wide empty space in a way similar to Star Control 2.
-        </p>
-        <h1>
-            Enter the Rogue Frontier
-        </h1>
-        <p>
-            This game requires .NET 5.0 to play.
-        </p>
-        <p>
-            <a href="https://ineedauniqueusername.itch.io/rogue-frontier">Download on itch.io</a>
-        </p>
-        <p><a href="https://github.com/INeedAUniqueUsername/TranscendenceRL">Source code on GitHub</a></p>
+    <div id="main">
+        <h1 style="height:360px; margin:0px 0px 0px 0px;"></h1>
+        <h1 id="title">Transcendence: Rogue Frontier</h1>
+        <p id="subtitle">A MEMORY OF A VISION IN A DREAM</p>
     </div>
+    <div id="desc">
+        <div class="section">
+            <h1>Introduction</h1>
+            <p>
+                TranscendenceRL is a story-rich, real-time, grid-based, ASCII-style, space-opera roguelike set in the universe of George Moromisato's <em>Transcendence</em>.
+            </p>
+            <p>
+                In the Rogue Frontier, war remains unheard and yet ever persistent. Civilizations crumble without a sound. Space is where the Voices of the Core echo their words. To most humans, the words sound like nothing but radio noise. But if someone is (un)lucky enough, one of the Voices might appear to them out of nowhere.
+            </p>
+        </div>
+        <div class="section ">
+            <h1>Voices of the Void</h1>
+            <div style="height: 32px;"></div>
+            <div class="row voices">
+                <div style="border-color:violet;">
+                    <h2 style="color:violet;">The Orator</h2>
+                    <p style="color:violet;">Voice of reasonable order</p>
+                </div>
+                <div style="border-color:red;">
+                    <h2 style="color:red;">The Dictator</h2>
+                    <p style="color:red;">Voice of unreasonable order</p>
+                </div>
+                <div style="border-color:cyan;">
+                    <h2 style="color:cyan;">The Debater</h2>
+                    <p style="color:cyan;">Voice of reasonable chaos</p>
+                </div>
+                <div style="border-color:mediumspringgreen;">
+                    <h2 style="color:mediumspringgreen;">The Rhetor</h2>
+                    <p style="color:mediumspringgreen;">Voice of unreasonable chaos</p>
+                </div>
+            </div>
+            <p>
+                In a dream, you met the Orator and received several visions followed by a simple message: If you want an answer, then travel to the Galactic Core or die trying.
+            </p>
+            <p>
+                Soon after the dream, you bought yourself a starship and headed over to a nearby outpost of the Followers of the Orator. There, you may find guidance on reaching the Core. What happens next is up to you.
+            </p>
+        </div>
+
+        <div class="section">
+
+            <h1>
+                Choose a ship
+            </h1>
+            <p>
+                Buy your first starship and upgrade your weapons, shields, armor, and reactor as you go.
+            </p>
+            <div style="height:36px;"></div>
+            <div class="row ships">
+                <div style="border-color: violet;">
+                    <h2>Amethyst-class yacht</h2>
+                    <img class="shipImage" src="ship_amethyst.png" />
+                    <p>A aesthetically-pleasing general-purpose ship for wealthy buyers. The Amethyst strikes a balance between weapon firepower, cargo capacity, and engine power.</p>
+                </div>
+    
+                <div style="border-color: lightblue;">
+                    <h2>Beowulf-class gunship</h2>
+                    <img class="shipImage" src="ship_beowulf.png" />
+                    <p>A combat-oriented ship for highly aggressive pilots. The Beowulf is armed with fast engines and faster lasers.</p>
+                </div>
+    
+                <div style="border-color: gold;">
+                    <h2>Wagon-class freighter</h2>
+                    <img class="shipImage" src="ship_wagon.png" />
+                    <p>A merchant's ship with plenty of space for cargo and devices. The Wagon is armed with an omnidirectional cannon for easy aiming.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h1>Interact with factions</h1>
+            <p>There are multiple factions, each with their own problems and enemies.</p>
+            <ul>
+                <li>The United Constellation is your home and the target of warlords and pirates</li>
+                <li>The Followers of the Orator provides shelters for the Orator's surviving pilgrims.</li>
+                <li>The Orion Warlords terrorize Constellation citizens with high-velocity weapons.</li>
+                <li>The Iron Pirates sustain themselves by seizing resources through force</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h1>
+                Travel the stars
+            </h1>
+            <p>
+                Fight your way to the Galactic Core. Dock with wrecks to collect treasure and dock with stations to trade items. Travel across the wide empty space in a way similar to Star Control 2.
+            </p>
+        </div>
+        
+        <div class="section">
+            <h1>
+                Enter the Rogue Frontier
+            </h1>
+            <p>
+                This game requires .NET 5.0 to play.
+            </p>
+            <p>
+                <a href="https://ineedauniqueusername.itch.io/rogue-frontier">Download on itch.io</a>
+            </p>
+            <p><a href="https://github.com/INeedAUniqueUsername/TranscendenceRL">Source code on GitHub</a></p>
+        </div>
+    </div>
+
+    
 </body>
 </html>
