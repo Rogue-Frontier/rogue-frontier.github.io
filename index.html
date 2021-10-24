@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Transcendence: Rogue Frontier</title>
+    <title>Rogue Frontier</title>
     <style>
 
         * {
@@ -53,7 +53,6 @@
         #desc {
             padding-left:90px;
             padding-right:90px;
-            padding-bottom:256px;
 
             
             background-image: URL(SplashBackground.png);
@@ -114,12 +113,24 @@
             margin-left:32px;
         }
     </style>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 </head>
 <body id="body">
     <div id="main">
         <h1 style="height:25vw; margin:0px 0px 0px 0px;"></h1>
-        <h1 id="title">Transcendence: Rogue Frontier</h1>
-        <p id="subtitle">A REIMAGINING OF A DREAM</p>
+        <h1 id="title">Rogue Frontier</h1>
+        <script type="text/javascript">
+
+            let s = [
+                'THEY SHALL BE HEARD',
+                'LOST IN THE LETTERS',
+                'A JOURNEY BEYOND WORDS',
+            ]
+            document.currentScript.outerHTML = 
+`<p id="subtitle">${s[Math.floor(Math.random() * s.length)]}</p>
+`
+        </script>
     </div>
 <!--
     <div id="info">
@@ -132,10 +143,10 @@
         <div class="section">
             <h1>Introduction</h1>
             <p>
-                Transcendence: Rogue Frontier is a story-rich, real-time, grid-based, ASCII-style, space-opera roguelike set in the universe of <a href="https://transcendence.kronosaur.com/"><em>Transcendence</em>, the space opera roguelike by George Moromisato.</a>
+                Rogue Frontier is a story-rich, real-time, grid-based, ASCII-style, space-opera roguelike set in an alternate universe of <a href="https://transcendence.kronosaur.com/"><em>Transcendence</em>, the space opera roguelike by George Moromisato.</a>
             </p>
             <p>
-                In the Rogue Frontier, war remains unheard and yet ever persistent. Civilizations crumble without a sound. Space is where the Voices of the Core echo their words. To most humans, the words sound like nothing but radio noise. But if someone is (un)lucky enough, one of the Voices might appear to them out of nowhere.
+                In the year 2400, humanity occupies the void beyond Earth, yet conflict and destruction escalate to a level never seen before. Communications break down across the distance, and peace begins to fall apart once again. For those who seek a new kind of answer, the Voices make themselves heard.
             </p>
         </div>
         <div class="section ">
@@ -150,9 +161,9 @@
                     <h2 style="color:red;">The Dictator</h2>
                     <p style="color:red;">Voice of unreasonable order</p>
                 </div>
-                <div style="border-color:cyan;">
-                    <h2 style="color:cyan;">The Debater</h2>
-                    <p style="color:cyan;">Voice of reasonable chaos</p>
+                <div style="border-color:yellow;">
+                    <h2 style="color:yellow;">The Debater</h2>
+                    <p style="color:yellow;">Voice of reasonable chaos</p>
                 </div>
                 <div style="border-color:mediumspringgreen;">
                     <h2 style="color:mediumspringgreen;">The Rhetor</h2>
@@ -160,10 +171,10 @@
                 </div>
             </div>
             <p>
-                In a dream, you met the Orator and received several visions followed by a simple message: If you want an answer, then travel to the Galactic Core or die trying.
+                In a dream, you meet the Orator and receive several visions followed by a simple message: If you seek an answer, then you shall find it at the Galactic Core.
             </p>
             <p>
-                Soon after the dream, you bought yourself a starship and headed over to a nearby outpost of the Followers of the Orator. There, you may find guidance on reaching the Core. What happens next is up to you.
+                You byy yourself a starship and locate a nearby outpost of the Followers of the Orator. There, you may find guidance on reaching the Core. What happens next is up to you.
             </p>
         </div>
 
@@ -198,11 +209,25 @@
         </div>
 
         <div class="section">
-            <h1>Interact with factions</h1>
-            <p>There are multiple factions, each with their own problems and enemies.</p>
+            <h1>Navigate the field</h1>
+            <p>You are but a small character in the universe. Move your ship with the arrow keys, inspect your surroundings with the minimap / megamap, and watch where you're heading!</p>
+            <div style="height:36px;"></div>
+            <img src="gameplay.png" style="width:80%;"/>
+        </div>
+
+        <div class="section">
+            <h1>Dock at the station</h1>
+            <p>Take a rest at a station (or board a wreck), trade some items (or loot some), and advance the story (or just find things to read).</p>
+            <div style="height:36px;"></div>
+            <img src="dock.png" style="width:80%;"/>
+        </div>
+
+        <div class="section">
+            <h1>Meet the sovereigns</h1>
+            <p>There are many factions, each with their own problems and enemies. Help them or harm them, and face the consequences.</p>
             <ul>
-                <li>The United Constellation is your home and the target of warlords and pirates</li>
-                <li>The Followers of the Orator provides shelters for the Orator's surviving pilgrims.</li>
+                <li>The United Constellation is your old home and the target of warlords and pirates</li>
+                <li>The Followers of the Orator provide shelters for the Orator's surviving pilgrims.</li>
                 <li>The Orion Warlords terrorize Constellation citizens with high-velocity weapons.</li>
                 <li>The Iron Pirates sustain themselves by seizing resources through force</li>
             </ul>
@@ -213,7 +238,14 @@
                 Travel the stars
             </h1>
             <p>
-                Fight your way to the Galactic Core. Dock with wrecks to collect treasure and dock with stations to trade items. Travel across the wide empty space in a way similar to Star Control 2.
+                Enter the stargate network to travel across star systems.
+            </p>
+        </div>
+
+        <div class="section">
+            <h1>Development</h1>
+            <p>
+                Rogue Frontier is a project supported entirely by one developer's free time. As such, it is a work in progress. Story and content may be limited, but functionality and aesthetic shall always be polished. 
             </p>
         </div>
         
@@ -229,6 +261,13 @@
             </p>
             <p><a href="https://github.com/INeedAUniqueUsername/TranscendenceRL">Source code on GitHub</a></p>
         </div>
+        <div style="height:108px;"></div>
+        <div class="section">
+            <p>Rogue Frontier is (C) 2021 by Alex M. Chen, also known as "Archcannon" or "INeedAUniqueUsername"</p>
+            <p>Transcendence is property of Kronosaur Productions.</p>
+            <p>Rogue Frontier is not affiliated with Kronosaur Productions in any way.</p>
+        </div>
+        <div style="height:160px;"></div>
     </div>
 
     
