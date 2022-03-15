@@ -1,0 +1,166 @@
+<html>
+<head>
+    <title>Rogue Frontier - 2a</title>
+    <style>
+
+        * {
+            margin: 0px 0px 0px 0px;
+            padding:0px 0px 0px 0px;
+            font-family: IBM Plex Mono;
+            color:white;
+        }
+
+        #body {
+        }
+
+
+        #main {
+            background-image: url(2a-banner.png);
+            background-size: 100%;
+            background-position: 0px 0px;
+            margin: 0px 0px 0px 0px;
+            padding:0px 0px 0px 0px;
+            width: 99vw;
+            height:59vw;
+
+            
+            text-align: center;
+        }
+        #title {
+            font-size: 64px;
+            margin: 0px 12vw 0px 12vw;
+            padding:16px 0px 16px 0px;
+            color:rgb(242, 208, 255);
+            
+            background-color: rgba(0, 27, 179, 0.5);
+        }
+        #subtitle {
+            font-size: 32px;
+            margin: 32px 30vw 32px 30vw;
+            padding:0px 0px 0px 0px;
+            background-color: black;
+            color:rgb(161, 255, 255);
+        }
+        #info {
+            
+            background-color: black;
+            background-size: 100%;
+            background-position: 0px 0px;
+            padding-left:96px;
+            padding-right:96px;
+
+        }
+        #desc {
+            padding-left:90px;
+            padding-right:90px;
+
+            
+            background-image: URL(SplashBackground.png);
+            background-size: 100%;
+            background-position: 0px 0px;
+        }
+        .section {
+            padding:32px 32px 32px 32px;
+            background-color: rgba(16, 62, 94, 0.733);
+        }
+
+        h1 {
+            font-size:36px;
+        }
+        p {
+            margin-top:24px;
+            font-size: 24px;
+        }
+
+        
+        .row > div {
+            display:inline-block;
+        }
+
+        .voices > div {
+            border: 2px solid white;
+            
+            margin: 0px 0px 0px 0px;
+            text-align: center;
+            width:300px;
+
+            background-color: black;
+        }
+
+        .ships > div {
+            border:2px solid white;
+            vertical-align:top;
+            width:420px;
+            background-color: black;
+        }
+        .ships > div > h2 {
+            text-align:center;
+        }
+            .ships > div > img {
+                position: relative;
+                width: 420px;
+                height: 420px;
+            }
+            .ships > div > p {
+                margin-top: 0px;
+                margin-left:32px;
+                margin-right:32px;
+                margin-bottom: 32px;
+            }
+
+        ul {
+            font-size:24px;
+            margin-left:32px;
+        }
+    </style>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    
+    <meta property="og:title" content="Rogue Frontier - 2a"/>
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rogue-frontier.github.io/2a.html" />
+    <meta property="og:image" content="https://rogue-frontier.github.io/2a-cover.png" />
+    <meta property="og:description" content="A retrospective on Rogue Frontier's second year of development." />
+</head>
+<body id="body">
+    <div id="main">
+        <h1 style="height:25vw; margin:0px 0px 0px 0px;"></h1>
+        <h1 id="title">Rogue Frontier</h1>
+        <p id="subtitle">The Second Year</p>
+    </div>
+<!--
+    <div id="info">
+
+        <h1>aaa</h1>
+    </div>
+-->
+    <div id="desc">
+        <div style="height: 90px;"></div>
+        <div class="section">
+            <h1>Retrospective</h1>
+            <p>Rogue Frontier is a story-rich, real-time, grid-based, ASCII-style, space-opera roguelike set in an alternate universe of <a href="https://transcendence.kronosaur.com/"><em>Transcendence</em>, the top-down space-opera adventure game by George Moromisato.</a>. It began in April 2020, during a time when I had too much free time.</p>
+
+            <p>Rogue Frontier is not my first attempt at creating a unique game - it is only the latest (and longest-surviving) iteration in a lineage of strange and Unique (TM) ideas. The first idea was a fractured Space Invaders game called <i>Last Stand of Earth</i> (2017) in my fourth year of high school. The second idea was a twisted Asteroids game called <i>Super Nostalgia Entertainment Syndrome</i> (2017) before my high school graduation. The next idea was <i>Nostalgia 64</i> (2018, incomplete) - a spaceship fighter with unforgiving physics. Add to these the Transcendence mods and models that I released inbetween. I'm 23 years old now and I think it's time that I started working on something big.</p>
+
+            <p>Rogue Frontier is both a technical exercise and creative exercise. It's an attempt at fitting a modern space adventure game into a grid, and then painting it in colorful ASCII tiles. Most of the work so far has gone into developing the engine and figuring out the graphical style, as I want the game to be both technically advanced and vibrantly animated. The codebase reaches 30k lines of code and becomes 2 years old this year. It's ambitious in every way, and I'm not worried about giving up - it already has a strong creative foundation.</p>
+<!--
+            <p>One difficult task was implementing save/load with JSON serialization. It turns out that events and delegates cannot be serialized. As a solution, I implemented a custom object-based substitute.</p>
+-->
+            <p>Rogue Frontier is at heart a reimagining of Transcendence. Like any great artist, I'm <i>stealing</i> ideas from the original and twisting them into my own. Instead of "hyperintelligences" named Domina and Oracus, there are "voices" known as The Orator and The Dictator. Instead of the Commonwealth and the Ares, there is the Constellation and the Dark Star. I have many more ideas as a result of considering hypothetical questions  that were not answered in the original game.</p>
+
+            <p>I've been developing Rogue Frontier on-and-off for the last two years, since I've also been working on other random creative things (and schoolwork). It's only with 2022 that I started detailing the game a lot more. I've clarified main ideas for the enemy factions and their defining gameplay characteristics, thinking about how each faction complements the others. I've implemented several combat mechanics that will show up in the game - hooks, lightning, decay, flash, blinding, etc. I've rewritten the intro material to further distinguish Rogue Frontier from its source material and reinterpret the original texts.</p>
+
+            <p>I plan to release a full "vertical slice" demo of Rogue Frontier by this June.</p>
+        </div>
+        <div style="height:108px;"></div>
+        <div class="section">
+            <p>Rogue Frontier is (C) 2022 by Alex M. Chen, also known as "Archcannon" or "INeedAUniqueUsername"</p>
+            <p>Transcendence is property of Kronosaur Productions.</p>
+            <p>Rogue Frontier is not affiliated with Kronosaur Productions in any way.</p>
+        </div>
+        <div style="height:160px;"></div>
+    </div>
+
+    
+</body>
+</html>
